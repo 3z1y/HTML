@@ -3,8 +3,8 @@ export const onRequestGet = async ({ env, request }) => {
     const url = new URL(request.url);
     const all = url.searchParams.get('all') === '1';
     let sql = 'SELECT * FROM articles';
-if (!all) sql += ' WHERE published = 1';
-sql += ' ORDER BY date DESC';
+    if (!all) sql += ' WHERE published = 1';
+    sql += ' ORDER BY date DESC';
     
     // 检查 DB 是否存在
     if (!env.DB) throw new Error("数据库绑定丢失：请检查 Settings -> Bindings 中是否绑定了名为 DB 的数据库");
